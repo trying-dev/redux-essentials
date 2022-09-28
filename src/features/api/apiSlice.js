@@ -20,6 +20,7 @@ export const apiSlice = createApi({
       invalidatesTags: ['Posts'],
     }),
     addReaction: builder.mutation({
+      // 
       query: ({ postId, reaction }) => ({
         url: `posts/${postId}/reactions`,
         method: 'POST',
@@ -27,16 +28,17 @@ export const apiSlice = createApi({
         // so that a user can't do the same reaction more than once
         body: { reaction },
       }),
+
       invalidatesTags: ['Posts'],
+
       async onQueryStarted({ postId, reaction }, { dispatch, queryFulfilled }) {
         const patchResult = dispatch(
           apiSlice.util.updateQueryData('getPosts', undefined, (draft) => {
             const post = draft.find((post) => post.id === postId)
-            if (post) {
-              post.reactions[reaction]++
-            }
+            if (post) post.reactions[reaction]++
           })
         )
+
         try {
           await queryFulfilled
         } catch {
@@ -47,8 +49,5 @@ export const apiSlice = createApi({
   }),
 })
 
-export const {
-  useGetPostsQuery,
-  useEditPostMutation,
-  useAddReactionMutation,
-} = apiSlice
+export const { useGetPostsQuery, useEditPostMutation, useAddReactionMutation } =
+  apiSlice

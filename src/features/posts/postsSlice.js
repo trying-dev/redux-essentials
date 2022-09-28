@@ -4,6 +4,7 @@ import {
   createSelector,
   createEntityAdapter,
 } from '@reduxjs/toolkit'
+
 import { client } from '../../api/client'
 
 const postsAdapter = createEntityAdapter({

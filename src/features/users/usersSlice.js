@@ -3,6 +3,7 @@ import { createEntityAdapter, createSelector } from '@reduxjs/toolkit'
 import { apiSlice } from '../api/apiSlice'
 
 const usersAdapter = createEntityAdapter()
+
 const usersInitialState = usersAdapter.getInitialState()
 
 export const extendedApi = apiSlice.injectEndpoints({

@@ -13,17 +13,14 @@ export async function client(endpoint, { body, ...customConfig } = {}) {
     },
   }
 
-  if (body) {
-    config.body = JSON.stringify(body)
-  }
+  if (body) config.body = JSON.stringify(body)
 
   let data
+
   try {
     const response = await window.fetch(endpoint, config)
     data = await response.json()
-    if (response.ok) {
-      return data
-    }
+    if (response.ok) return data
     throw new Error(response.statusText)
   } catch (err) {
     return Promise.reject(err.message ? err.message : data)
