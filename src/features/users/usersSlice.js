@@ -20,6 +20,7 @@ export const extendedApi = apiSlice.injectEndpoints({
 export const { useGetUsersQuery } = extendedApi
 
 export const selectUsersResult = extendedApi.endpoints.getUsers.select()
+
 const selectUsersData = createSelector(
   selectUsersResult,
   (usersResult) => usersResult.data

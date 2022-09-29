@@ -1,3 +1,7 @@
+* {
+  transition: all 300ms linear;
+}
+
 :root {
   --redux-color: #764abc;
 }
@@ -66,12 +70,18 @@ nav a:hover {
 
 .navLinks a {
   margin-left: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
 }
 
 .navLinks a .badge {
-  margin-left: 5px;
-  position: relative;
-  top: -3px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #9966e8;
 }
 
 .badge {

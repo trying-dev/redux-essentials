@@ -476,7 +476,7 @@ a:hover,
 a:active,
 a:focus {
   color: #0246a2;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 mark {
