@@ -48,21 +48,38 @@ export const PostsList = () => {
   } = useGetPostsQuery()
 
   const sortedPosts = useMemo(() => {
+
     const sortedPosts = posts.slice()
-    sortedPosts.sort((a, b) => b.date.localeCompare(a.date))
+
+    sortedPosts.sort(
+      (a, b) => 
+      b.date.localeCompare(a.date)
+    )
+
     return sortedPosts
+
   }, [posts])
 
   let content
 
   if (isLoading) {
+
     content = <div className="loader">Loading...</div>
+
   } else if (isSuccess) {
-    content = sortedPosts.map((post) => (
+
+    content = sortedPosts.map(
+      
+      (post) => (
+
       <PostExcerpt key={post.id} post={post} />
+
     ))
+
   } else if (isError) {
+
     content = <div>{error.toString()}</div>
+
   }
 
   return (
