@@ -11,6 +11,13 @@ const postsAdapter = createEntityAdapter({
   sortComparer: (a, b) => b.date.localeCompare(a.date),
 })
 
+console.log('postsAdapter: ', postsAdapter.getInitialState(), postsAdapter.getInitialState(
+  {
+    status: 'idle',
+    error: null,
+  }
+))
+
 const initialState = postsAdapter.getInitialState({
   status: 'idle',
   error: null,

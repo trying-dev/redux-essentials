@@ -116,16 +116,21 @@ const notificationsSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addMatcher(matchNotificationsReceived, (state, action) => {
+      // cambiar el estado a no nuevo
       Object.values(state.entities).forEach((notification) => {
         // Any notifications we've read are no longer new
         notification.isNew = !notification.read
       })
 
+      // adjuntar las nuevas notificaciones
       const newNotificationEntries = action.payload.map((notification) => ({
         id: notification.id,
         isNew: true,
         read: false,
       }))
+
+      // insertar las nuevas notificaciones
+      // este seria el catcher
       notificationsAdapter.upsertMany(state, newNotificationEntries)
     })
   },

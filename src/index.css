@@ -1,5 +1,14 @@
 * {
   transition: all 300ms linear;
+
+  animation-name: fade-in;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 :root {
@@ -24,16 +33,34 @@ p {
   font-size: 1.1rem;
 }
 
+div {
+  display: flex;
+}
+
 /* Navbar */
+
+#root {
+  flex-direction: column;
+}
+
+.App {
+  flex-direction: column;
+  padding: 1rem 0;
+  gap: 1rem;
+}
 
 nav {
   display: flex;
-  padding: 0;
+  gap: 2rem;
+  padding: 2rem 0;
   background: var(--redux-color);
 }
 
 nav section {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 nav section h1,
@@ -265,4 +292,37 @@ button.reaction-button {
 
 .notification.new {
   background-color: rgba(29, 161, 242, 0.1);
+}
+
+
+
+/* 
+  add-a-new-post post section
+
+
+*/
+
+.flex {
+  display: flex;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.add-a-new-post {
+  min-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.add-a-new-post form {
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
