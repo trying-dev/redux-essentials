@@ -14,7 +14,7 @@ export const Navbar = () => {
   const notifications = useSelector(selectAllNotifications)
 
   const { data = [] } = useGetNotificationsQuery()
-  console.log('Notifications: ', data)
+  // console.log('Notifications: ', data)
 
   const fetchNewNotifications = () => {
     dispatch(fetchNotificationsWebsocket())

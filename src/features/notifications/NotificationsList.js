@@ -12,14 +12,29 @@ import {
   selectNotificationsMetadata,
   allNotificationsRead,
   useGetNotificationsQuery,
+
+  selectAllNotifications,
+  selectNotificationById,
+  selectIds,
+  selectTotal
+
 } from './notificationsSlice'
 
 export const NotificationsList = () => {
   const dispatch = useDispatch()
+
   const { data: notifications = [] } = useGetNotificationsQuery()
+
   const users = useSelector(selectAllUsers)
 
   const notificationsMetadata = useSelector(selectNotificationsMetadata)
+  
+  // console.log('\n\n')
+  // console.log(useSelector(selectAllNotifications))
+  // console.log(useSelector(selectNotificationById))
+  // console.log(useSelector(selectIds))
+  // console.log(useSelector(selectTotal))
+  // console.log('\n\n')
 
   useLayoutEffect(() => {
     dispatch(allNotificationsRead())
@@ -27,7 +42,9 @@ export const NotificationsList = () => {
 
   const renderedNotifications = notifications.map((notification) => {
     const date = parseISO(notification.date)
+
     const timeAgo = formatDistanceToNow(date)
+
     const user = users.find((user) => user.id === notification.user) || {
       name: 'Unknown User',
     }
@@ -35,7 +52,9 @@ export const NotificationsList = () => {
     const metadata = notificationsMetadata[notification.id]
 
     const notificationClassname = classnames('notification', {
+      
       new: metadata.isNew,
+
     })
 
     return (
@@ -52,8 +71,11 @@ export const NotificationsList = () => {
 
   return (
     <section className="notificationsList">
+
       <h2>Notifications</h2>
+
       {renderedNotifications}
+
     </section>
   )
 }

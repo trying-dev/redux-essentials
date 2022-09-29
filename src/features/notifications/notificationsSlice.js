@@ -144,4 +144,6 @@ export const {
   selectAll: selectAllNotifications,
   selectById: selectNotificationById,
   selectEntities: selectNotificationsMetadata,
+  selectIds,
+  selectTotal
 } = notificationsAdapter.getSelectors((state) => state.notifications)
